@@ -40,7 +40,10 @@ public class StrategyTIDEMAN extends Strategy{
         opponentSecondLastMove = opponentLastMove;
 
         if (punishmentAmount == 0)
+        {
+            myLastMove = opponentLastMove;
             return opponentLastMove;
+        }
 
         if (punishmentAmount < 0)
         {
