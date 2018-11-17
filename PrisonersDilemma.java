@@ -10,10 +10,10 @@ public class PrisonersDilemma extends Object
    Strategy player1;
    Strategy player2;
 
-   int T = 7;
-   int R = 5;
-   int P = 3;
-   int S = 1;
+   int T = 5;
+   int R = 3;
+   int P = 1;
+   int S = 0;
 
    int player1Payoff;
    int player2Payoff;

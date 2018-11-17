@@ -1,10 +1,10 @@
 public class StrategyTIDEMAN extends Strategy{
     // 0 = defect, 1 = cooperate
 
-    int T = 7;
-    int R = 5;
-    int P = 3;
-    int S = 1;
+    int T = 5;
+    int R = 3;
+    int P = 1;
+    int S = 0;
 
     int punishmentAmount;
     int opponentSecondLastMove;
