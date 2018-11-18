@@ -25,6 +25,8 @@ public class StrategyNYDEGGER extends Strategy
 
   public int nextMove()
   {
+    //System.out.printf("Opponent Last Move: %d\n", opponentLastMove);
+
     //First three moves
     if(myMoves[0] == -1)
     {
@@ -35,6 +37,11 @@ public class StrategyNYDEGGER extends Strategy
     if(myMoves[1] == -1)
     {
       UpdateOpponentMoves(opponentLastMove);
+      if(opponentLastMove == 1)
+      {
+        UpdateMyMoves(1);
+        return 1;
+      }
       UpdateMyMoves(0);
       return 0;
     }
@@ -42,6 +49,16 @@ public class StrategyNYDEGGER extends Strategy
     if(myMoves[2] == -1)
     {
       UpdateOpponentMoves(opponentLastMove);
+      if((oppMoves[1] == 0) && (oppMoves[0] == 1) && (myMoves[1] == 1) && (myMoves[0] == 0))
+      {
+        UpdateMyMoves(0);
+        return 0;
+      }
+      if (opponentLastMove == 1)
+      {
+        UpdateMyMoves(1);
+        return 1;
+      }
       UpdateMyMoves(0);
       return 0;
     }
@@ -69,15 +86,23 @@ public class StrategyNYDEGGER extends Strategy
 
     for (int i = 0; i < moveHistory; i++)
     {
+      //System.out.printf("i = %d\n", i);
       if (myMoves[i] == 0)
+      {
         defectionScore += (moveWeights[i]*myDefects);
+        //System.out.printf("Mine: %d\n", moveWeights[i]);
+      }
       if (oppMoves[i] == 0)
+      {
         defectionScore += (moveWeights[i]*oppDefects);
+        //System.out.printf("Opponent: %d\n", moveWeights[i]);
+      }
     }
 
+    //System.out.printf("Defection score is: %d\n", defectionScore);
     for (int i = 0; i < defectScore.length; i++)
     {
-      if (i == defectScore[i])
+      if (defectionScore == defectScore[i])
       {
         UpdateMyMoves(0);
         return 0;
